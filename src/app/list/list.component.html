@@ -1,0 +1,50 @@
+
+<h1>{{title}}</h1>
+
+<div *ngIf="selectedItem">
+    <h2>{{selectedItem.name}} details</h2>
+    <div><label>name: <input (ngModel)="selectedItem.name" placeholder="{{selectedItem.name}}"></label></div>
+    <div>
+        <label>is complete: 
+            <input type="checkbox" (ngModel)="selectedItem.isComplete">
+        </label>
+    </div>
+</div>
+
+<ul class="items">
+    <li *ngFor="let item of items"
+    (click)="onSelect(item)"
+    [class.selected] = "item === selectedItem">
+        <div><span>id: </span>{{item.id}}</div>
+        <div><span>name: </span>{{item.name}}</div>
+        <div>
+            <span>is complete: </span>{{item.isComplete}}
+        </div>
+        <div [ngSwitch]="item.id">
+            <p *ngSwitchCase="1">The priority task!</p>
+            <p *ngSwitchDefault>Meh, relax, dude</p>
+        </div>
+    </li>
+</ul>
+
+<div *ngIf="items.length > 0">
+    <span>The length of the list:</span> {{items.length}} {{items.length == 1 ? 'item' : 'items'}}
+</div>
+
+<hr>
+
+<h2>“{{toDoItem.name | uppercase}}” Details</h2>
+
+<div><span>id: </span>{{toDoItem.id}}</div>
+<div><span>name: </span>{{toDoItem.name}}</div>
+<div>
+    <span>is complete: </span>{{toDoItem.isComplete}}
+</div>
+
+<div><span>num: </span>{{7.5 | number:'1.1-2'}}</div>
+<div><span>num: </span>{{2.25 | number:'2.1-2'}}</div>
+<div><span>num: </span>{{10.125 | number:'0.1-2'}}</div>
+
+<div><span>cur: </span>{{2000 | currency:'KZT':'₸':'1.0-2'}}</div>
+
+<div><span>date: </span>{{'2023-07-03' | date:'long'}}</div>

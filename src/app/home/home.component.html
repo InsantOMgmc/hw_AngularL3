@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<h2>{{getTitle()}}</h2>
+<img src="assets/image-43D6-9331-70-0.png" width="100">
+
+<article>
+    <div>
+        <input [(ngModel)]="name" placeholder="Something">
+        <button (click)="addItem(name)">Add</button>
+    </div>
+    <table>
+        <tr *ngFor="let item of items">
+            <td>{{item}}</td>
+        </tr>
+    </table>
+</article>
